@@ -1,0 +1,36 @@
+name: Build Windows EXE
+on: [push] # Triggers the build every time you push code
+
+jobs:
+  build:
+    runs-on: windows-latest # Runs on a Windows virtual machine
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21' # Or your preferred JDK version
+          distribution: 'temurin'
+
+      - name: Build with Maven # Change to Gradle if needed
+        run: mvn clean package
+
+      - name: Create Windows Installer
+        run: |
+          # jpackage command to bundle the app
+          jpackage --name "HashMaster" `
+                   --input target/ `
+                   --main-jar HashMaster.jar `
+                   --main-class com.ykatsatos.hashmaster.hashmaster.Launcher `
+                   --type exe `
+                   --win-shortcut `
+                   --win-menu `
+                   --win-dir-chooser
+
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-installer
+          path: "*.exe" # Uploads the generated .exe file
