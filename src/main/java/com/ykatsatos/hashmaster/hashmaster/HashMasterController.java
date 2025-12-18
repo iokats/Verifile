@@ -68,7 +68,7 @@ public class HashMasterController {
 
         try (FileInputStream fileStream = new FileInputStream(selectedFile)) {
             final byte[] byteArray = new byte[maxReadSize];
-            int bytesCount = 0;
+            int bytesCount;
             while ((bytesCount = fileStream.read(byteArray)) != -1) {
                 digest.update(byteArray, 0, bytesCount);
             }
