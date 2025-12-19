@@ -7,15 +7,24 @@ jobs:
     runs-on: windows-latest
 
     steps:
+      # -----------------------------
+      # Checkout source
+      # -----------------------------
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # -----------------------------
+      # Setup Java 21
+      # -----------------------------
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
+      # -----------------------------
+      # Build with Maven
+      # -----------------------------
       - name: Build with Maven
         run: mvn clean package
 
@@ -28,38 +37,38 @@ jobs:
           tar -xf javafx.zip
 
       # -----------------------------
-      # Create custom runtime (jlink)
+      # Create custom Java runtime (jlink)
       # -----------------------------
       - name: Create Java Runtime Image
         run: |
-          jlink ^
-            --module-path "%JAVA_HOME%\jmods;javafx-sdk-21\lib" ^
-            --add-modules java.base,java.desktop,javafx.controls,javafx.fxml ^
-            --output runtime ^
-            --strip-debug ^
-            --no-header-files ^
+          jlink `
+            --module-path "$env:JAVA_HOME\jmods;javafx-sdk-21\lib" `
+            --add-modules java.base,java.desktop,javafx.controls,javafx.fxml `
+            --output runtime `
+            --strip-debug `
+            --no-header-files `
             --no-man-pages
 
       # -----------------------------
-      # Create Windows Installer
+      # Create Windows installer (EXE)
       # -----------------------------
       - name: Create Windows Installer
         run: |
-          jpackage ^
-            --name HashMaster ^
-            --type exe ^
-            --input target ^
-            --main-jar HashMaster-1.0-SNAPSHOT.jar ^
-            --main-class com.ykatsatos.hashmaster.HashMasterApplication ^
-            --runtime-image runtime ^
-            --app-version 1.0.0 ^
-            --vendor "IEKatsatos" ^
-            --win-menu ^
-            --win-shortcut ^
+          jpackage `
+            --name HashMaster `
+            --type exe `
+            --input target `
+            --main-jar HashMaster-1.0-SNAPSHOT.jar `
+            --main-class com.ykatsatos.hashmaster.HashMasterApplication `
+            --runtime-image runtime `
+            --app-version 1.0.0 `
+            --vendor "YourName" `
+            --win-menu `
+            --win-shortcut `
             --win-dir-chooser
 
       # -----------------------------
-      # Upload Installer
+      # Upload installer artifact
       # -----------------------------
       - name: Upload Installer
         uses: actions/upload-artifact@v4
