@@ -24,15 +24,14 @@ jobs:
 
       - name: Create Linux Installer
         run: |
-          # Create the .deb package
           jpackage --name "HashMaster" \
-                   --input target/ \
-                   --main-jar HashMaster-1.0-SNAPSHOT.jar \
-                   --main-class com.ykatsatos.hashmaster.Launcher \
                    --type deb \
+                   --module com.ykatsatos.hashMaster/com.ykatsatos.hashmaster.HashMasterApplication \
+                   --module-path "target/HashMaster-1.0-SNAPSHOT.jar:target/libs" \
+                   --app-version "1.0.0" \
+                   --vendor "YourName" \
                    --install-dir /opt/hashmaster \
-                   --linux-shortcut \
-                   --linux-menu-group "Utility"
+                   --linux-shortcut
 
       - name: Upload Installer
         uses: actions/upload-artifact@v4
