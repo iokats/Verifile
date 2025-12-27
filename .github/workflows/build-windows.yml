@@ -43,11 +43,12 @@ jobs:
         run: |
           jlink `
             --module-path "$env:JAVA_HOME\jmods;javafx-sdk-21\lib" `
-            --add-modules java.base,java.desktop,javafx.controls,javafx.fxml `
+            --add-modules java.base,java.desktop,java.scripting,jdk.unsupported,java.logging,java.xml,javafx.controls,javafx.fxml,javafx.graphics,javafx.media `
             --output runtime `
             --strip-debug `
             --no-header-files `
-            --no-man-pages
+            --no-man-pages `
+            --bind-services 
 
       # -----------------------------
       # Create Windows installer (EXE)
