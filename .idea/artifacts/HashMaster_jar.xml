@@ -2,7 +2,7 @@
   <artifact type="jar" name="HashMaster:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/HashMaster_jar</output-path>
     <root id="archive" name="hashMaster.jar">
-      <element id="module-output" name="hashMaster" />
+      <element id="module-output" name="verifile" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-media/21.0.6/javafx-media-21.0.6-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/21.0.6/javafx-controls-21.0.6-linux.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/eu/hansolo/toolboxfx/21.0.5/toolboxfx-21.0.5.jar" path-in-jar="/" />

@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.ykatsatos.hashmaster</groupId>
-  <artifactId>HashMaster</artifactId>
+  <groupId>com.ykatsatos.verifile</groupId>
+  <artifactId>Verifile</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>HashMaster</name>
+  <name>Verifile</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
