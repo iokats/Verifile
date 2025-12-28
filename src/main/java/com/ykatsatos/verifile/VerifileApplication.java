@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class VerifileApplication extends Application {
 
-    private static final String TITLE = "Hash Master";
-    private static final String VIEW_FXML = "hashmaster-view.fxml";
+    private static final String TITLE = "Veriflie";
+    private static final String VIEW_FXML = "verifile-view.fxml";
 
     private VerifileController controller;
 
