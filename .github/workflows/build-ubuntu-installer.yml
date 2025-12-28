@@ -26,7 +26,7 @@ jobs:
         run: |
           jpackage --name "Verifile" \
                    --type deb \
-                   --module com.ykatsatos.hashMaster/com.ykatsatos.verifile.VerifileApplication \
+                   --module com.ykatsatos.verifile/com.ykatsatos.verifile.VerifileApplication \
                    --module-path "target/Verifile-1.0-SNAPSHOT.jar:target/libs" \
                    --app-version "1.0.0" \
                    --vendor "IEK" \
